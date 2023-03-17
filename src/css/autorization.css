@@ -1,0 +1,162 @@
+body{
+    background-color: #CFCEF8;
+}
+
+input[type=password] {
+    /* border: #829CA5;
+    border-width: 100; */
+    /* stroke: #829CA5; */
+    outline:none; 
+    border: 1px solid #829CA5;
+    /* border-radius: 0.25rem; */
+}
+
+input[type=password]:active {
+    /* outline:none; */
+    border: 1px solid #040405;
+}
+
+input[type=password]:focus {
+    /* outline:none; */
+    border: 1px solid #A9A7F0;
+}
+
+input[type=text] {
+    /* border: #829CA5;
+    border-width: 100; */
+    /* stroke: #829CA5; */
+    outline:none; 
+    border: 1px solid #829CA5;
+    /* border-radius: 0.25rem; */
+}
+
+input[type=text]:active {
+    /* outline:none; */
+    border: 1px solid #A9A7F0;
+}
+
+input[type=text]:focus {
+    /* outline:none; */
+    border: 1px solid #A9A7F0;
+}
+
+input[type=button] {
+    /* border: #829CA5;
+    border-width: 100; */
+    /* stroke: #829CA5; */
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+    height: 36px;
+    outline:none; 
+    border: 1px solid #829CA5;
+    border-radius: 0.60rem;
+    /* border-radius: 0.25rem; */
+}
+
+input[type=button]:active {
+    /* outline:none; */
+    border: 1px solid  #A9A7F0;
+}
+
+input[type=button]:focus {
+    /* outline:none; */
+    border: 1px solid #A9A7F0;
+}
+
+.prog_name{
+    color: #EBEBEB;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.place_to_name{
+    width: 360px;
+    height: 80px;
+    background-color: #A9A7F0;
+    /* vertical-align: middle; */
+    position: relative;
+    margin-top: 200px;
+    margin-left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+    
+}
+
+.login_block{
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.password_block{
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.login{
+    font-size: large;
+}
+
+.password{
+    font-size: large;
+}
+
+.enter_button{
+    font-size: large;
+    position: absolute;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    top: 75%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+
+
+.aut_form{
+    background-color: #D9D9D9;
+    position: relative;
+    width: 286px;
+    height: 204px;
+    margin-top: 62px;
+    margin-left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+label{
+    color: #EC2D2D;
+    font-size: large;
+}
+
+.login_mistake{
+    position: absolute;
+    top: 28%;
+    left: 15%;
+}
+.password_mistake{
+    position: absolute;
+    top: 53%;
+    left: 15%;
+    
+}
+
+
