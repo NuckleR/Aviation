@@ -7,9 +7,11 @@ function check_connection()
 
     const request = new XMLHttpRequest(); 
     const url = "php/check_autorization.php";
-    const params = "Login=" + login.value
-       + "&Password=" + password.value;
-    
+    const params = "login=" + login.value
+       + "&password=" + password.value;
+
+    console.log(login.value);
+
     request.responseType = "json";
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", 
@@ -25,9 +27,9 @@ function check_connection()
 
            // data = JSON.parse(obj);
 
-            if(obj[0]['Succsess'] === true && 
-                obj[0]['Password'] === true &&
-                obj[0]['Login'] === true)
+            if(obj[0]['succsess'] === true && 
+                obj[0]['password'] === true &&
+                obj[0]['login'] === true)
             {
                 document.location.href = "employees.html";
                 localStorage.setItem('AuthorizedUserId', obj[1]['id']);
@@ -35,19 +37,19 @@ function check_connection()
                 // localStorage.setItem('AuthorizedUserName', obj[1]['Surename'] + " " 
                 //     + obj[1]['Name'] + " " + obj[1]['Patronymic']);
                 // localStorage.setItem('AuthorizedUserDepartment', obj[1]['DepartmentId']);
-                //console.log(obj[1]['id']);
+                console.log(obj[1]['id']);
             }
-            if(obj[0]['Login'] === false)
+            if(obj[0]['login'] === false)
             {
                 document.getElementById("mistake_1").textContent="Неверный логин!";
             }
-            if(obj[0]['Password'] === false)
+            if(obj[0]['password'] === false)
             {
                 document.getElementById("mistake_2").textContent="Неверный пароль!";
             }
         }
     })
-    
+
     request.send(params);
 
     // $.ajax({

@@ -4,8 +4,9 @@ $data_json = json_encode($_POST, JSON_UNESCAPED_UNICODE);
 
 $data = json_decode($data_json);
 
-$_login = $data->{'Login'};
-$_password = $data->{'Password'};
+$_login = $data->{'login'};
+$_password = $data->{'password'};
+
 
 $hostname = "localhost";
 $username = "root";
@@ -22,8 +23,8 @@ if($link === false)
 else
 {
     //print_r("Хорошо");
-    $query_1 = "SELECT DISTINCT id FROM Employee
-        WHERE Password = '$_password'";
+    $query_1 = "SELECT DISTINCT id FROM Users
+        WHERE password = '$_password'";
     
     $result = mysqli_query($link, $query_1);
     $dataRow_1 = array();
@@ -35,15 +36,15 @@ else
 
     if(sizeof($dataRow_1) == 0)
     {
-        $dataRow[0]['Password'] = false;
+        $dataRow[0]['password'] = false;
     }
     else
     {
-        $dataRow[0]['Password'] = true;
+        $dataRow[0]['password'] = true;
     }   
 
-    $query_2 = "SELECT DISTINCT id FROM Employee
-        WHERE Login = '$_login'";
+    $query_2 = "SELECT DISTINCT id FROM Users
+        WHERE login = '$_login'";
     
     $result = mysqli_query($link, $query_2);
     $dataRow_2 = array();
@@ -55,23 +56,26 @@ else
 
     if(sizeof($dataRow_2) == 0)
     {
-        $dataRow[0]['Login'] = false;
+        $dataRow[0]['login'] = false;
     }
     else
     {
-        $dataRow[0]['Login'] = true;
+        $dataRow[0]['login'] = true;
     }   
 
     if($dataRow_1[0]['id'] != $dataRow_2[0]['id'] 
         || sizeof($dataRow_1) == 0 || sizeof($dataRow_2) == 0)
     {
-        $dataRow[0]['Succsess'] = false;
+        $dataRow[0]['succsess'] = false;
         echo json_encode($dataRow);
     }
     else
     {
-        $query = "SELECT DISTINCT id FROM Employee
-            WHERE Login = '$_login' and Password = '$_password'";
+        $query = "SELECT DISTINCT employee_id, users_group_id, password, login
+            FROM Users
+            -- JOIN Employee ON Employee.id = Users.employee_id
+            -- JOIN Users_Groups ON Users_Groups = User.users_group_id
+            WHERE login = '$_login' and password = '$_password'";
 
         $result = mysqli_query($link, $query);
 
@@ -82,14 +86,14 @@ else
         
         if(sizeof($dataRow) == 0)
         {
-            $dataRow[0]['Succsess'] = false;
+            $dataRow[0]['succsess'] = false;
         
             echo json_encode($dataRow);
         }
         else
         {
 
-            $dataRow[0]['Succsess'] = true;
+            $dataRow[0]['succsess'] = true;
         
             echo json_encode($dataRow);
         }   

@@ -3,6 +3,7 @@ body{
    margin: 0px;
    padding: 0px;
    background-color: #CFCEF8;
+   
 }
 
 input[type=text] {
@@ -50,6 +51,7 @@ input[type=text]:focus {
 .account_data{
     width: 20%;
     left: 70%;
+    /* min-width: 50%; */
     /* margin-left: 1; */
     border-left:1px solid #829CA5;
     position: relative;
@@ -353,10 +355,13 @@ input[type=button]:focus {
     top:160px;
     margin-left: 20px;
     outline: 1px solid #829CA5;
+    min-width: 800px;
 }
 
 .employee_table table{
     width: 100%;
+
+    min-width: 800px;
     border-collapse: collapse;
     outline: 1px solid #829CA5;
     table-layout: fixed;
@@ -376,6 +381,7 @@ input[type=button]:focus {
 .employee_table_body {
     width: 100%;
     height: 480px;
+    min-width: 800px;
     overflow-x: auto;
 }
 
@@ -629,7 +635,20 @@ input[type=button]:focus {
     right: 10%;
     width:80%;
     top: 40px;
+    outline: none;
+    border: 1px solid #829CA5;
 }
+
+.comment:active {
+    /* outline:none; */
+    border: 1px solid  #A9A7F0;
+}
+
+.comment:focus {
+    /* outline:none; */
+    border: 1px solid #A9A7F0;
+}
+
 
 .comment_lable{
     position: absolute;
