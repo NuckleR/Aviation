@@ -1,0 +1,164 @@
+Аэродром "Липки"
+
+	Руководство:
+		Type: 1
+		Login: DRuk11LA
+		Password: 
+
+		Type: 2
+		Login: DRuk12LA
+		Password: 
+
+	ОРП:
+		Type: 2
+		Login: DORP12LA
+		Password:
+
+	СД:
+		Type: 2
+		Login: DSD12LA
+		Password:  
+	
+	АМО:
+		Type: 2
+		Login: DAMO12LA
+		Password: 
+
+	МС:
+		Type: 2
+		Login: DMS12LA
+		Password: 
+
+	СБП:
+		Type: 2
+		Login: DSBP12LA
+		Password: 
+
+	КЦПС:
+		Type: 2
+		Login: DKCPS12LA
+		Password: 
+
+	ЧОП:
+		Type: 2
+		Login: DCHOP12LA
+		Password:
+
+	ОРАТ:
+		Type: 2
+		Login: DORAT12LA
+		Password:
+
+	ОЭиПЛГ:
+		Type: 2
+		Login: DOEiPLG12LA
+		Password:
+
+	ЦИАО:
+		Type: 2
+		Login: DCIAO12LA
+		Password:    
+
+	ЦЭАиТОП:
+		Type: 2
+		Login: DCEAiTOP12LA
+		Password:
+
+	МТОиС:
+		Type: 2
+		Login: DMTOiS12LA
+		Password:  
+	
+	ОМиДР:
+		Type: 2
+		Login: DOMiDR12LA
+		Password:
+
+	ГОТиПБ:
+		Type: 2
+		Login: DGOTiPB12LA
+		Password:
+
+	ГЮО:
+		Type: 2
+		Login: DGUO12LA
+		Password:
+	
+	ГДПиКИ:
+		Type: 2
+		Login: DGDPiKI12LA
+		Password:
+
+	ГСБ:
+		Type: 2
+		Login: DGSB12LA
+		Password:   
+
+	ГМС:
+		Type: 2
+		Login: DGMS12LA
+		Password:
+
+	ГИРиКО:
+		Type: 2
+		Login: DGIRiKO12LA
+		Password:
+
+	ОДС:
+		Type: 2
+		Login: DODS12LA
+		Password:
+
+	ФЭО:
+		Type: 2
+		Login: DFEO12LA
+		Password:
+
+Аэродром "Озерки"
+
+	АО:
+		Type: 1
+		Login: DAO11LAO
+		Password: 
+      
+		Type: 2
+		Login: DAO12LAO
+		Password:  
+
+ВАТЦ
+
+	ВАТЦ:
+		Type: 1
+		Login: DVATC11LV
+		Password: 
+      
+		Type: 2
+		Login: DVATC12LV
+		Password:       
+
+ЦАОЛ
+
+	ЦАОЛ:
+		Type: 1
+		Login: DCAOL11LC
+		Password: 
+      
+		Type: 2
+		Login: DCAOL12LC
+		Password: 
+	
+	ПА:
+		Type: 2
+		Login: DPA12LC
+		Password: 
+
+	МА:
+		Type: 2
+		Login: DMA12LC
+		Password: 
+
+Admin
+	Admin:
+		Type: 1
+		Login: Admin
+		Password: Admin

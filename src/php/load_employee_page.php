@@ -3,7 +3,7 @@
 
     $data = json_decode($data_json);
     
-    $_Uid = $data->{'Uid'};
+    $_AL = $data->{'AL'};
 
     $hostname = "localhost";
     $username = "root";
@@ -19,43 +19,53 @@
     } 
     else
     {
-        $query_1 = "Select * FROM Location";
-        $query_2 = "Select * FROM Department";
-        $query_3 = "Select * FROM Employee";
+        if($_AL == 40404)
+        {
+            $query_1 = "Select id, name FROM Location";
+            $query_2 = "Select location_id, id, name FROM Department";
+            $query_3 = 'Select e.id, e.department_id, e.name, 
+                                e.surname, e.patronymic, r.name AS rank,
+                                s.name AS speciality
+                        FROM Employee e 
+                        LEFT JOIN Rank r ON e.rank_id=r.id
+                        LEFT JOIN Speciality s ON e.speciality_id=s.id';
+        }
+        else if($_AL == 1)
+        {
+
+        }
+        else if($_AL == 2)
+        {
+            
+        }
 
         $result_1 = mysqli_query($link, $query_1);
         $result_2 = mysqli_query($link, $query_2);
         $result_3 = mysqli_query($link, $query_3);
     
-        $data_Row_1 = array();
+        // $data_Row_1 = array();
+        $data_Row_res['locations']['departments']['employess'];
 
         while($row_1 = mysqli_fetch_assoc($result_1))
         {
             $dataRow_1[] = $row_1;
         }
-        $array = array(
-            "end_of_location_part" => true,
-        );
-        $dataRow_1[] = $array;
-       
+        $data_Row_res['locations'] = $dataRow_1;
+
         while($row_2 = mysqli_fetch_assoc($result_2))
         {
-            $dataRow_1[] = $row_2;
+            $dataRow_2[] = $row_2;
         }
-        $array = array(
-            "end_of_department_part" => true,
-        );
-        $dataRow_1[] = $array;
-       
+        $data_Row_res['departments'] = $dataRow_2;
+
         while($row_3 = mysqli_fetch_assoc($result_3))
         {
-            $dataRow_1[] = $row_3;
+            $dataRow_3[] = $row_3;
         }
-        $array = array(
-            "end_of_employee_part" => true,
-        );
-        $dataRow_1[] = $array;
-        
-        echo json_encode($dataRow_1);
+        $data_Row_res['employees'] = $dataRow_3;
+
+        // echo json_encode($dataRow_1);
+        // echo json_encode([$dataRow_1, $dataRow_2, $dataRow_3]);
+        echo json_encode($data_Row_res);
     }
 ?>

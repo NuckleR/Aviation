@@ -2,74 +2,108 @@ function check_connection()
 {
     console.log("Start of check script");
 
-    var login = document.getElementById("login");
-    var password = document.getElementById("password");
+    let login = document.getElementById("login");
+    let password = document.getElementById("password");
+    let password_hash = CryptoJS.SHA256(password.value).toString(); 
 
-    const request = new XMLHttpRequest(); 
-    const url = "php/check_autorization.php";
+    login_change();
+    password_change();
+
+    // const request = new XMLHttpRequest(); 
+    // const url = "php/check_autorization.php";
     const params = "login=" + login.value
-       + "&password=" + password.value;
+       + "&password=" + password_hash;
 
-    console.log(login.value);
+    // request.responseType = "json";
+    // request.open("POST", url, true);
+    // request.setRequestHeader("Content-type", 
+    //     "application/x-www-form-urlencoded");
 
-    request.responseType = "json";
-    request.open("POST", url, true);
-    request.setRequestHeader("Content-type", 
-        "application/x-www-form-urlencoded");
+    // request.addEventListener("readystatechange", ()=>{
+    //     console.log("Entered eventlistener");
 
-    request.addEventListener("readystatechange", ()=>{
-        console.log("Entered eventlistener");
-
-        if(request.readyState === 4 && request.status === 200){
-            let obj = request.response;
+    //     if(request.readyState === 4 && request.status === 200){
+    //         let obj = request.response;
             
+    //         console.log(obj);
+
+    //        // data = JSON.parse(obj);
+
+    //         if(obj[0]['succsess'] === true && 
+    //             obj[0]['password'] === true &&
+    //             obj[0]['login'] === true)
+    //         {
+    //             document.location.href = "employees.php";
+    //             localStorage.setItem('AuthorizedUserId', obj[1]['id']);
+    //             // localStorage.setItem('AuthorizedUserId', obj[1]['id']);
+    //             // localStorage.setItem('AuthorizedUserName', obj[1]['Surename'] + " " 
+    //             //     + obj[1]['Name'] + " " + obj[1]['Patronymic']);
+    //             // localStorage.setItem('AuthorizedUserDepartment', obj[1]['DepartmentId']);
+    //         }
+    //         if(obj[0]['login'] === false)
+    //         {
+    //             document.getElementById("mistake_1").textContent="Неверный логин!";
+    //         }
+    //         if(obj[0]['password'] === false)
+    //         {
+    //             document.getElementById("mistake_2").textContent="Неверный пароль!";
+    //         }
+    //     }
+    // })
+
+    // request.send(params);
+
+    // console.log(password_hash);
+    // console.log(params);
+
+    $.ajax({
+        url: 'php/check_autorization.php',
+        method: 'post',
+        dataType: 'json',
+        data: params,
+        success: function(obj){
             console.log(obj);
 
-           // data = JSON.parse(obj);
+            if(obj[0]['succsess'] === true)
+            {
+                localStorage.setItem('AccessLevel', obj[0]['users_group_id']);
 
-            if(obj[0]['succsess'] === true && 
-                obj[0]['password'] === true &&
-                obj[0]['login'] === true)
-            {
-                document.location.href = "employees.html";
-                localStorage.setItem('AuthorizedUserId', obj[1]['id']);
-                // localStorage.setItem('AuthorizedUserId', obj[1]['id']);
-                // localStorage.setItem('AuthorizedUserName', obj[1]['Surename'] + " " 
-                //     + obj[1]['Name'] + " " + obj[1]['Patronymic']);
-                // localStorage.setItem('AuthorizedUserDepartment', obj[1]['DepartmentId']);
-                console.log(obj[1]['id']);
+                $('#password').addClass('is-valid');
+                $('#login').addClass('is-valid');
+                $('#alert').remove();
+
+                document.location.href = 'employees.php';
             }
-            if(obj[0]['login'] === false)
+            else if(obj[0]['succsess'] === false)
             {
-                document.getElementById("mistake_1").textContent="Неверный логин!";
-            }
-            if(obj[0]['password'] === false)
-            {
-                document.getElementById("mistake_2").textContent="Неверный пароль!";
+                $('#password').addClass('is-invalid');
+                $('#login').addClass('is-invalid');
+
+                if($('#alert').length){
+                    $('#alert').remove(); 
+                }
+
+                $('#password_block').after( 
+                    `<div class="alert alert-danger alert-dismissible" role="alert" id="alert">
+                        <div>Неверный логин или пароль!</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`
+                );
             }
         }
-    })
-
-    request.send(params);
-
-    // $.ajax({
-    //     url: 'php/check_connection.php',
-    //     method: 'post',
-    //     dataType: 'json',
-    //     data: params,
-    //     success: function(res){
-    //         console.log(res);
-    //     }
-
-    // });
+    });
 }
 
-function off_mistake_login()
-{
-    document.getElementById("mistake_1").textContent="";
+function login_change(){
+    if ($('#login').hasClass('is-invalid')) 
+    {
+        $('#login').removeClass('is-invalid');
+    } 
 }
 
-function off_mistake_password()
-{
-    document.getElementById("mistake_2").textContent="";
+function password_change(){
+    if ($('#password').hasClass("is-invalid")) 
+    {
+        $('#password').removeClass("is-invalid");
+    } 
 }
