@@ -52,23 +52,12 @@
             <label for="department_search" class="form-label">Отдел</label>
             <select id="department_search" class="form-select overflow-y-scroll fs-5" style= "cursor:pointer">
                 <option selected>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
-                <option>...</option>
             </select>
         </div>
         <div class="col-md-6 col-lg-3">
             <label for="rank_search" class="form-label">Звание</label>
             <select id="rank_search" class="form-select fs-5" style= "cursor:pointer">
-            <option selected>...</option>
-            <option>...</option>
+                <option selected>...</option>
             </select>
         </div>
         <!-- <div class="col-md-6 col-lg-3">
@@ -80,9 +69,7 @@
         </div> -->
         <div class="d-flex justify-content-center col-md-8 col-lg-3" style="padding-top: 41px;">
             <button type="button" class="btn btn-primary fs-5" 
-            data-bs-toggle="modal" 
-                                            data-bs-target="#modal_form"
-            onclick="init()">Поиск</button>
+                onclick="search_function()">Поиск</button>
         </div>
         </form>
 
@@ -251,13 +238,17 @@
 
     <script type="text/javascript" src="js/jQuery/jQuery.js"></script>
     <script type="text/javascript" src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/employee_page_init.js"></script>s
     <script type="text/javascript" src="js/employees.js"></script>
-    <script type="text/javascript" src="js/employee_page_init.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
 
+    <!-- Ниже заглушка модальное окно -->
     <footer class="bd-footer mt-auto col-12 py-3 my-4 fs-5">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">О приложении</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"
+            data-bs-toggle="modal" data-bs-target="#modal_form">О приложении</a></li>
         </ul>
         <p class="text-center text-muted">ГААСУ "Авиация"</p>
     </footer>

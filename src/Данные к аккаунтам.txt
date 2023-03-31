@@ -1,164 +1,228 @@
 Аэродром "Липки"
 
 	Руководство:
-		Type: 1
+	+	Type: 1
 		Login: DRuk11LA
-		Password: 
+		Password: Lz7GwYjK
+		Salt: Gq4DX4uA
+		d542785a165fce0856900f43ea36ad23009d657c21a4549bee0b02df9baaeaaaGq4DX4uA
 
-		Type: 2
+	+	Type: 2
 		Login: DRuk12LA
-		Password: 
+		Password: rE5fA9mX
+		Salt: f6UaGZ3r
+		a92196b4d4019bb72dd9d00980b3cc250df478bb26502c39e143096466fa766bf6UaGZ3r
 
 	ОРП:
-		Type: 2
+	+	Type: 2
 		Login: DORP12LA
-		Password:
+		Password: D8tZsNcV
+		Salt: zTj9sX7n
+		6c7cbcfaa1b4bde2e83ceb6cdbba4d79bc30e5b13317714fe9a97f00b1a8d079zTj9sX7n
 
 	СД:
-		Type: 2
+	+	Type: 2
 		Login: DSD12LA
-		Password:  
-	
+		Password: pR6vTnJh
+		Salt: Rd2vYB1w
+		fb01d4ac35f2cc065936a4a929c4c15a8405040e7205aed182e70c4fd88c79b4Rd2vYB1w	
+
 	АМО:
-		Type: 2
+	+	Type: 2
 		Login: DAMO12LA
-		Password: 
+		Password: qM2xH3tB
+		Salt: Lc8bKF5m
+		e3bf261dea11a2f71ef6cc1616248afcd330faa9c5ad37194a93226c41912809Lc8bKF5m
 
 	МС:
-		Type: 2
+	+	Type: 2
 		Login: DMS12LA
-		Password: 
+		Password: K9nCzG5L
+		Salt: Qx7tHJ6k
+		f5e3d8e1fac87c69b3622cef171ae196da77dd7dc8e7219fdc16e17f82ae61a2Qx7tHJ6k
 
 	СБП:
-		Type: 2
+	+	Type: 2
 		Login: DSBP12LA
-		Password: 
+		Password: wY7fP8bT
+		Salt: Ee5pCZ1g
+		ec4b3b935aaa37e4e6797cba0c068832bc751a9cd81a75c37606999868f45c81Ee5pCZ1g
 
 	КЦПС:
-		Type: 2
+	+	Type: 2
 		Login: DKCPS12LA
-		Password: 
+		Password: rU5dF1vH
+		Salt: Mw3vNf4z
+		3eb9879b8e22017ab86cc34003c6c238b3c82b137768181d81f7ca2494ef5820Mw3vNf4z
 
 	ЧОП:
-		Type: 2
+	+	Type: 2
 		Login: DCHOP12LA
-		Password:
+		Password: sX4fV6jK
+		Salt: Sd9uVJ5h
+		2298c251d30994478100b30aa1c10d6abfc8535121438be72e612f405c72cf12Sd9uVJ5h
 
 	ОРАТ:
-		Type: 2
+	+	Type: 2
 		Login: DORAT12LA
-		Password:
+		Password: L7zW8yNt
+		Salt: Kf2yLm6c
+		b0ff744b214a633bb3428d82a0d79506cf207dacde5a1b24128702e90419c0d3Kf2yLm6c
 
 	ОЭиПЛГ:
 		Type: 2
 		Login: DOEiPLG12LA
-		Password:
+		Password: uS2xM9cV
+		Salt: Pw8zNj7x
+		eaa4e649d28c2b645c996f5f7b82826abf8585e9ada9e8605e19ad8975ea3c01Pw8zNj7x
 
 	ЦИАО:
 		Type: 2
 		Login: DCIAO12LA
-		Password:    
+		Password: B3hA6gTq
+		Salt: Xe4bFg1v   
+		a8c79fd999ae65d648ae2bca02206b67ae99282d120c526a1793febe38568296Xe4bFg1v
 
 	ЦЭАиТОП:
 		Type: 2
 		Login: DCEAiTOP12LA
-		Password:
+		Password: F1jK8lNz
+		Salt: Yh5tCz3u
+		65db6b41d13a2ecb8b28d5821cd22bb6c6c5226d07783ab7e9c20d23e94f0430Yh5tCz3u
 
 	МТОиС:
 		Type: 2
 		Login: DMTOiS12LA
-		Password:  
+		Password: eG6sR7pW
+		Salt: Jk6pAq9r
+		dbef4e976b9b3b65cd22618c33f993807b69adde2b61171245bf5e58ead0baeaJk6pAq9r
 	
 	ОМиДР:
 		Type: 2
 		Login: DOMiDR12LA
-		Password:
+		Password: T4fV5hJm
+		Salt: Uf7mDc2s
+		72179637365d45e7dfc24e8b4e1d663f8b19bcbf8283644979f984c3c25a7fc3Uf7mDc2s
 
 	ГОТиПБ:
 		Type: 2
 		Login: DGOTiPB12LA
-		Password:
+		Password: Q2wE3dRb
+		Salt: Vz8nBw1x
+		f131888603a90822fdb5aea408ae21534d64b434f3ade1c3750461f0c803a8a5Vz8nBw1x
 
 	ГЮО:
 		Type: 2
 		Login: DGUO12LA
-		Password:
+		Password: hA9sL7nZ
+		Salt: Tj2sGh3r
+		b8409ea033a07d21faee0aa6b1969738a7dd49ce9ec6ed24f48eab449dd40c6cTj2sGh3r
 	
 	ГДПиКИ:
 		Type: 2
 		Login: DGDPiKI12LA
-		Password:
+		Password: pT6dC4kX
+		Salt: Nc6tFy4p
+		5267cc8160e752151affb8f98322fa54d60d690435fb4f6a54adae6b9c9f0669Nc6tFy4p
 
 	ГСБ:
 		Type: 2
 		Login: DGSB12LA
-		Password:   
+		Password: F8lN2jK7
+		Salt: Wv1uLm5k 
+		2230ee8e02e49b59b5600920f5bd23e2632a7ad0c1d72c48802b53d407659417Wv1uLm5k
 
 	ГМС:
 		Type: 2
 		Login: DGMS12LA
-		Password:
-
+		Password: zW7xY9tB
+		Salt: Qx9zKg7e
+		51b9b77683061db410747cebf74ac504b57fc9357256d7eaf93181fe42a6c6aaQx9zKg7e
+		
 	ГИРиКО:
 		Type: 2
 		Login: DGIRiKO12LA
-		Password:
+		Password: cV5nM2bH
+		Salt: Rd3yHj8t
+		f12856f0706bf30b1e21e7ea8f17bd54145074ca445c7f6ba6e2cac11e9420beRd3yHj8t
 
 	ОДС:
 		Type: 2
 		Login: DODS12LA
-		Password:
+		Password: rP6vT9jK
+		Salt: Zs5nBf6w
+		b0a3a1b082e89d9389108dbfee5d6bd8008514ad18d12e02bc95720fb5512503Zs5nBf6w
 
 	ФЭО:
 		Type: 2
 		Login: DFEO12LA
-		Password:
+		Password: L1hF5tZs
+		Salt: Xa7mCq9p
+		d98cc5f12ac3bb41b9c53f76ce5bda067f6c47e2ebd916cb0dc504822f30ed35Xa7mCq9p
 
 Аэродром "Озерки"
 
 	АО:
 		Type: 1
 		Login: DAO11LAO
-		Password: 
-      
+		Password: mX3dR7wE
+		Salt: Vf1uGk2s
+		f2aade7faef06cf4e81e08d54e011c6d3c2bfd2ecade15592eadef9075089ff2Vf1uGk2s
+
 		Type: 2
 		Login: DAO12LAO
-		Password:  
+		Password: nN9cV2xM 
+		Salt: Yc2tLz8n
+		0d803d1f3183e3e4370c97f4b8b37bb14d0e30a06d462f21f86f610938107bbbYc2tLz8n
 
 ВАТЦ
 
 	ВАТЦ:
 		Type: 1
 		Login: DVATC11LV
-		Password: 
-      
+		Password: qT8bW6yG
+		Salt: Ux4bPj5h
+		2a2d544c4a260ca439a20f7dbc733ec665ff304e12e7cf55b07a8b0e42ddda61Ux4bPj5h
+
 		Type: 2
 		Login: DVATC12LV
-		Password:       
+		Password: J5hK7fR6
+		Salt: Sd6vFg7r   
+		184cc825e73c63340a6385dae21bca27872813fad84c4e9a94a328c014203858Sd6vFg7r    
 
 ЦАОЛ
 
 	ЦАОЛ:
 		Type: 1
 		Login: DCAOL11LC
-		Password: 
-      
+		Password: lZ2jN8tW
+      		Salt: Jp9mKw3z
+		a4d7d0ea791a62b9a9495c152a5a016c0e18c24a169ea49692d47821d2a017ffJp9mKw3z
+
 		Type: 2
 		Login: DCAOL12LC
-		Password: 
+		Password: sP9kC6vH
+		Salt: Wq8zNc1x
+		da080eb32b11001bf302b0c91dc9ebf030d66812f6211e89f50df2a78f55ba32Wq8zNc1x
 	
 	ПА:
 		Type: 2
 		Login: DPA12LC
-		Password: 
+		Password: yG4tQ1wE
+		Salt: Tg5bVf2s
+		987e806a7ebb4f2371da7a4f4226b268b5d2b062d44edcd4cba3b792f7ee8d45Tg5bVf2s
 
 	МА:
 		Type: 2
 		Login: DMA12LC
-		Password: 
+		Password: w2lciae4
+		Salt: Mj7yHk4p
+		04084de218cc32b1f92e6e10d0b9efbb94bc5500cc4465b8d82d90df89f7d696Mj7yHk4p
 
 Admin
 	Admin:
 		Type: 1
 		Login: Admin
 		Password: Admin
+		Salt: zSoQisk9
+		c1c224b03cd9bc7b6a86d77f5dace40191766c485cd55dc48caf9ac873335d6fzSoQisk9

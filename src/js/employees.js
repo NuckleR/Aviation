@@ -1,7 +1,3 @@
-function search_fun(){
-
-}
-
 function employee_info(element){
     console.log(element.id);
 
@@ -34,7 +30,7 @@ function employee_info(element){
             html +=
             `
             <div class="container">
-                <div class="row g-3 mx-auto col-10 fs-5 pb-3">
+                <div class="row g-3 mx-auto col-10 fs-5 pb-1 border-bottom">
                     <div class="col-lg-8 col-md-12 mt-5">
                         <div class="col-lg-8 col-md-12">
                             <label for="surname" class="form-label">Фамилия</label>
@@ -58,8 +54,56 @@ function employee_info(element){
                                 class="img-fluid" 
                                 alt="lll" style="max-width: 150px; height: 200px;">
                         </div>
-                        <button type="button" class="btn btn-primary col-md-12">Сменить картинку</button>
+                        <button type="button" class="btn btn-primary col-md-12 fs-5">Сменить картинку</button>
                     </div>
+                    <div class="col-md-12 col-lg-6">
+                        <label for="rank" class="form-label">Звание</label>
+                        <select id="rank" class="form-select fs-5" style= "cursor:pointer">
+                            <option selected>Выберите...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <!-- <div class="col-md-12 col-lg-6">
+                        <label for="speciality" class="form-label">Должность</label>
+                        <select id="speciality" class="form-select fs-5" style= "cursor:pointer">
+                            <option selected>Выберите...</option>
+                            <option>...</option>
+                        </select>
+                    </div> -->
+                    <div class="col-md-12 col-lg-6">
+                        <label for="department" class="form-label">Отдел</label>
+                        <select id="department" class="form-select fs-5" style= "cursor:pointer">
+                            <option selected>Выберите...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <label for="location" class="form-label">Располжение</label>
+                        <select id="location" class="form-select fs-5" style= "cursor:pointer">
+                            <option selected>Выберите...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-10 col-lg-10 mx-auto pb-3 fs-5 border-bottom">
+                    <label for="message-text" class="col-form-label ">Комментарий</label>
+                    <textarea id="message-text" class="form-control fs-5" style="height: 100px;"></textarea>
+                </div>
+                <div class="row g-3 d-flex col-md-10 col-lg-10 mx-auto pt-3 fs-5">
+                    <div class="col-form-label col-md-12 col-lg-4">Состояние на</div>
+                    <input type="date" id="date" class="form-control col-md-12 col-lg-8 fs-5">
+                    <input id="status" type="text" 
+                        class="form-control col-md-12 col-lg-4 fs-5" value="" placeholder="Статус">
+                    <div class="col-1 text-center">
+                        c
+                    </div>
+                    <input id="status_start" type="text" 
+                        class="form-control col-md-11 col-lg-3 fs-5" value="" placeholder="Число">
+                    <div class="col-1 text-center">
+                        по
+                    </div>
+                    <input id="status_end" type="text" 
+                        class="form-control col-md-11 col-lg-3 fs-5" value="" placeholder="Число">
                 </div>
             </div>
             `
