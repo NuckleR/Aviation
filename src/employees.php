@@ -1,11 +1,12 @@
 <?php
     // Проверка сессии
     session_start();
-
-    if($_SESSION['active'] == false){
+    // var_dump($_SESSION['active']);
+    // exit();
+    if(!isset($_SESSION['active']) || $_SESSION['active'] == false){
         // $new_url = ;
         header("Location: http://aviation/src/index.php"); 
-        exit;
+        exit();
     }
 ?>
 
@@ -18,16 +19,19 @@
     <!-- <link rel="stylesheet" href="css/employee.css"> -->
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="addons/select_2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="addons/select_2/dist/css/select2-bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"> -->
     <title>Работники</title>
 </head>
 <!-- <body onload="proba_pera()"> -->
 <body class="d-flex flex-column min-vh-100" onload="init()">
-    <!-- <header class="d-flex justify-content-center py-3 sticky-top fs-5 border-bottom pb-3" style="background:#ffffff;">  
+    <!-- <header class="d-flex justify-content-center py-3 sticky-top   border-bottom pb-3" style="background:#ffffff;">  
     <ul class="nav nav-pills">
         <li class="nav-item"><a href="#" class="nav-link  active" aria-current="page">Работники</a></li>
         <li class="nav-item"><a href="#" class="nav-link col-md-12">Отдел</a></li>
       </ul>
-      <button type="button" class="btn btn-danger fs-5 col-md-1" onclick="init()">Выход</button>
+      <button type="button" class="btn btn-danger   col-md-1" onclick="init()">Выход</button>
     </header> -->
     <!-- <div class="container"> -->
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom sticky-top"
@@ -37,70 +41,103 @@
          
         </a>
         <ul class="nav col-12 col-md-auto nav nav-pills mb-2 justify-content-center mb-md-0">
-        <li class="nav-item"><a href="#" class="nav-link  active fs-5" aria-current="page">Работники</a></li>
-        <li class="nav-item"><a href="#" class="nav-link fs-5">Отдел</a></li>
+        <li class="nav-item"><a href="#" class="nav-link  active  " aria-current="page">Работники</a></li>
+        <li class="nav-item"><a href="#" class="nav-link  ">Отдел</a></li>
         </ul>
 
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-danger me-2 fs-5" onclick="logout()">Выход</button>
+            <button type="button" class="btn btn-danger me-2  " onclick="logout()">Выход</button>
         </div>
     </header>
   <!-- </div> -->
 
-    <form class="row g-3 mx-auto col-6 fs-5 pb-3">
-        <div class="col-md-6 col-lg-3">
+    <form class="row g-3 mx-auto col-8 pb-3 justify-content-center d-flex">
+        <div class="col-md-6 col-lg-4">
+            <label for="name_search" class="form-label">ФИО</label>
+            <input id="name_search"
+                type="text" class="form-control  " value="" placeholder="Имя">
+        </div>
+        <div class="col-md-6 col-lg-2">
             <label for="department_search" class="form-label">Отдел</label>
-            <select id="department_search" class="form-select overflow-y-scroll fs-5" style= "cursor:pointer">
-                <option selected>...</option>
+            <select id="department_search" class="form-select overflow-y-scroll select2" style= "cursor:pointer;"
+                placeholder="Выберите отдел" value="">
+            
             </select>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-2">
             <label for="rank_search" class="form-label">Звание</label>
-            <select id="rank_search" class="form-select fs-5" style= "cursor:pointer">
-                <option selected>...</option>
+            <select id="rank_search" class="form-select overflow-y-scroll select2" style= "cursor:pointer;"
+                placeholder="Выберите звание" value="">
+
             </select>
         </div>
-        <!-- <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-2">
             <label for="speciality_search" class="form-label">Должность</label>
-            <select id="speciality_search" class="form-select fs-5" style= "cursor:pointer">
-            <option selected>...</option>
-            <option>...</option>
+            <select id="speciality_search" class="form-select overflow-y-scroll select2" style= "cursor:pointer"
+                placeholder="Выберите должность">
+           
             </select>
-        </div> -->
-        <div class="d-flex justify-content-center col-md-8 col-lg-3" style="padding-top: 41px;">
-            <button type="button" class="btn btn-primary fs-5" 
+        </div>
+        <div class="d-flex justify-content-center col-md-8 col-lg-3">
+            <button type="button" class="btn btn-primary" style="width: 100px;" 
                 onclick="search_function()">Поиск</button>
+        </div>
+        <div class="d-flex justify-content-center col-md-8 col-lg-2">
+            <button type="button" class="btn btn-warning" style="width: 100px;"
+                onclick="clear_search_function()">Очистить</button>
         </div>
         </form>
 
     <!-- Scrollable modal -->
     <div class="modal fade" id="modal_form" tabindex="-1" 
         data-bs-backdrop="static" data-bs-keyboard="false"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">`
+        aria-labelledby="info_modalLabel" aria-hidden="true">`
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="info_modalLabel">Информация о сотруднике</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h6 class="modal-title  " id="info_modalLabel">Информация о сотруднике</h6>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
             <div class="modal-body" id="modal_body">
                 <div class="container">
-                    <div class="row g-3 mx-auto col-10 fs-5 pb-1 border-bottom">
-                        <div class="col-lg-8 col-md-12 mt-5">
+                    <div class="row g-3 mx-auto col-12 pb-3 pt-0 border-bottom">
+                        <div class="col-lg-4 col-md-12">
                             <div class="col-lg-8 col-md-12">
                                 <label for="surname" class="form-label">Фамилия</label>
                                 <input id="surname"
-                                    type="text" class="form-control fs-5" value="" placeholder="Фамилия">
+                                    type="text" class="form-control  " value="" placeholder="Фамилия">
                             </div>
                             <div class="col-lg-8 col-md-12">
                                 <label for="name" class="form-label">Имя</label>
                                 <input id="name"
-                                    type="text" class="form-control fs-5" value="" placeholder="Имя">
+                                    type="text" class="form-control  " value="" placeholder="Имя">
                             </div>
                             <div class="col-lg-8 col-md-12">
                                 <label for="patronimic" class="form-label">Отчество</label>
                                 <input id="patronimc"
-                                    type="text" class="form-control fs-5" value="" placeholder="Отчество">
+                                    type="text" class="form-control  " value="" placeholder="Отчество">
+                            </div>
+                            <div class="col-md-12 col-lg-8">
+                                <label for="rank" class="form-label">Звание</label>
+                                <select id="rank" class="form-select select2" style= "cursor:pointer">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="col-md-12 col-lg-8">
+                                <label for="speciality" class="form-label">Должность</label>
+                                <select id="speciality" class="form-select select2" style= "cursor:pointer">
+                                </select>
+                            </div>
+                            <div class="col-md-12 col-lg-8">
+                                <label for="department" class="form-label">Отдел</label>
+                                <select id="department" class="form-select select2" style= "cursor:pointer">
+                                </select>
+                            </div>
+                            <div class="col-md-12 col-lg-8">
+                                <label for="location" class="form-label">Располжение</label>
+                                <select id="location" class="form-select select2" style= "cursor:pointer">
+                                </select>
                             </div>
                         </div>
                         <div class="row g-3 d-flex justify-content-center col-lg-4 col-md-12">
@@ -109,82 +146,55 @@
                                     class="img-fluid" 
                                     alt="lll" style="max-width: 150px; height: 200px;">
                             </div>
-                            <button type="button" class="btn btn-primary col-md-12 fs-5">Сменить картинку</button>
+                            <button type="button" class="btn btn-primary mx-auto col-md-10  ">Сменить картинку</button>
                         </div>
-                        <div class="col-md-12 col-lg-6">
-                            <label for="rank" class="form-label">Звание</label>
-                            <select id="rank" class="form-select fs-5" style= "cursor:pointer">
-                                <option selected>Выберите...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <!-- <div class="col-md-12 col-lg-6">
-                            <label for="speciality" class="form-label">Должность</label>
-                            <select id="speciality" class="form-select fs-5" style= "cursor:pointer">
-                                <option selected>Выберите...</option>
-                                <option>...</option>
-                            </select>
-                        </div> -->
-                        <div class="col-md-12 col-lg-6">
-                            <label for="department" class="form-label">Отдел</label>
-                            <select id="department" class="form-select fs-5" style= "cursor:pointer">
-                                <option selected>Выберите...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 col-lg-6">
-                            <label for="location" class="form-label">Располжение</label>
-                            <select id="location" class="form-select fs-5" style= "cursor:pointer">
-                                <option selected>Выберите...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
+                        
                     </div>
-                    <div class="col-md-10 col-lg-10 mx-auto pb-3 fs-5 border-bottom">
+                    <div class="col-md-10 col-lg-10 mx-auto pb-3   border-bottom">
                         <label for="message-text" class="col-form-label ">Комментарий</label>
-                        <textarea id="message-text" class="form-control fs-5" style="height: 100px;"></textarea>
+                        <textarea id="message-text" class="form-control  " style="height: 70px;"></textarea>
                     </div>
-                    <div class="row g-3 d-flex col-md-10 col-lg-10 mx-auto pt-3 fs-5">
+                    <div class="row g-3 d-flex col-md-10 col-lg-10 mx-auto pt-3  ">
                         <div class="col-form-label col-md-12 col-lg-4">Состояние на</div>
-                        <input type="date" id="date" class="form-control col-md-12 col-lg-8 fs-5">
-                        <input id="status" type="text" 
-                            class="form-control col-md-12 col-lg-4 fs-5" value="" placeholder="Статус">
+                        <input type="date" id="date" class="form-control col-md-12 col-lg-8  ">
+                        <input disabled id="status" type="text" 
+                            class="form-control col-md-12 col-lg-4  " value="" placeholder="Статус">
                         <div class="col-1 text-center">
                             c
                         </div>
-                        <input id="status_start" type="text" 
-                            class="form-control col-md-11 col-lg-3 fs-5" value="" placeholder="Число">
+                        <input disabled id="status_start" type="text" 
+                            class="form-control col-md-11 col-lg-3  " value="" placeholder="Число">
                         <div class="col-1 text-center">
                             по
                         </div>
-                        <input id="status_end" type="text" 
-                            class="form-control col-md-11 col-lg-3 fs-5" value="" placeholder="Число">
+                        <input  disabled id="status_end" type="text" 
+                            class="form-control col-md-11 col-lg-3  " value="" placeholder="Число">
                     </div>
                 </div>
             </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary fs-5" data-bs-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-primary fs-5">Сохранить</button>
+                <div id="modal_footer" class="modal-footer">
+                    <button type="button" class="btn btn-secondary  " data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary  ">Сохранить</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="text-center fs-5 col-10 mx-auto mb-0">
+    <div class="text-center   col-10 mx-auto mb-0">
         <table class="table justify-content-center table-sm table-bordered mb-0">
             <thead style="background:#0d6efd; color: #ffffff;">
                 <tr>
-                <th scope="col" class="col-md-4" style="border: 1px solid #0a53be;">ФИО</th>
+                <!-- <th scope="col" class="col-md-4" style="border: 1px solid #0a53be;">ФИО</th>
                     <th scope="col" class="col-md-4" style="border: 1px solid #0a53be;">Звание</th>
-                    <th scope="col" class="col-md-4 text-break" style="border: 1px solid #0a53be;">Инструменты</th>
-                    <!-- <th scope="col" class="col-md-4" style="border: 1px solid #0a53be;">ФИО</th>
+                    <th scope="col" class="col-md-4 text-break" style="border: 1px solid #0a53be;">Инструменты</th> -->
+                    <th scope="col" class="col-md-4" style="border: 1px solid #0a53be;">ФИО</th>
                     <th scope="col" class="col-md-2" style="border: 1px solid #0a53be;">Звание</th>
                     <th scope="col" class="col-md-3" style="border: 1px solid #0a53be;">Должность</th>
-                    <th scope="col" class="col-md-3 text-break" style="border: 1px solid #0a53be;">Инструменты</th> -->
+                    <th scope="col" class="col-md-3 text-break" style="border: 1px solid #0a53be;">Инструменты</th>
                 </tr>
             </thead>
         </table>
     </div>
-    <div class="text-center fs-5 col-10 mx-auto overflow-y-auto mt-0 mb-0" style="max-height: 480px">
+    <div class="text-center   col-10 mx-auto overflow-y-auto mt-0 mb-0" style="max-height: 480px">
         <table class="table justify-content-center table-sm table-bordered mb-0">
             <tbody id="table_body">
             <!-- <tr>
@@ -230,6 +240,8 @@
         </table>
     </div>
 
+    
+    
     <script type="text/javascript">
         $(function() {
             $('#datepicker').datepicker();
@@ -238,14 +250,22 @@
 
     <script type="text/javascript" src="js/jQuery/jQuery.js"></script>
     <script type="text/javascript" src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="addons/select_2/dist/js/select2.full.min.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
-    <script type="text/javascript" src="js/employee_page_init.js"></script>s
+    <script type="text/javascript" src="js/employee_page_init.js"></script>
     <script type="text/javascript" src="js/employees.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
+    <script type="text/javascript" src="js/for_select_2.js"></script>
+    <!-- <script type="text/javascript">
+        $(function() {
+            $('.select2').select2();
+        });
+
+    </script> -->
 
     <!-- Ниже заглушка модальное окно -->
-    <footer class="bd-footer mt-auto col-12 py-3 my-4 fs-5">
+    <footer class="bd-footer mt-auto col-12 py-3 my-4  ">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"
             data-bs-toggle="modal" data-bs-target="#modal_form">О приложении</a></li>

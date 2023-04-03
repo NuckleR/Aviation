@@ -2,6 +2,8 @@
 
 session_start();
 
+$_SESSION['active'] = false;
+
 $data_json = json_encode($_POST, JSON_UNESCAPED_UNICODE);
 
 $data = json_decode($data_json);

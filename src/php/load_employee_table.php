@@ -25,11 +25,12 @@
             $query_1 = "SELECT id, name FROM Location";
             $query_2 = "SELECT location_id, id, name FROM Department";
             $query_3 = 'SELECT e.id, e.department_id, e.name, 
-                                e.surname, e.patronymic, r.name AS rank,
+                                r.name AS rank,
                                 s.name AS speciality
                         FROM Employee e 
                         LEFT JOIN Rank r ON e.rank_id=r.id
-                        LEFT JOIN Speciality s ON e.speciality_id=s.id';
+                        LEFT JOIN Fetch_Department_Speciality f ON e.speciality_id=f.id
+                        LEFT JOIN Speciality s ON f.speciality_id=s.id';
         }
         else if($_AL == 1)
         {
@@ -45,7 +46,7 @@
                         LEFT JOIN Location l ON d.location_id = l.id
                         WHERE d.id = $_D_ID)";
             $query_3 = "SELECT e.id, e.department_id, e.name, 
-                                e.surname, e.patronymic, r.name AS rank,
+                                r.name AS rank,
                                 s.name AS speciality
                         FROM Employee e 
                         LEFT JOIN Rank r ON e.rank_id=r.id
@@ -67,7 +68,7 @@
                         FROM Department
                         WHERE id = $_D_ID";
             $query_3 = "SELECT e.id, e.department_id, e.name, 
-                                e.surname, e.patronymic, r.name AS rank,
+                                r.name AS rank,
                                 s.name AS speciality
                         FROM Employee e 
                         LEFT JOIN Rank r ON e.rank_id=r.id

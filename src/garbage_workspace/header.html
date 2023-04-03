@@ -9,14 +9,49 @@
     <link rel="stylesheet" href="bootstrap/bootstrap-grid.min.css">
     <title>Работники</title>
 </head>
-<header class="d-flex flex-column container border-bottom pb-3">
-    <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link  active" aria-current="page">Работники</a></li>
-        <li class="nav-item"><a href="#" class="nav-link col-md-12">Отдел</a></li>
-    </ul>
-
-
-</header>
+<div class="container">
+    <h2>Таблица с раскрывающимися строками</h2>
+    <p>Нажмите на название строки, чтобы раскрыть дополнительную информацию:</p>                                          
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Заголовок 1</th>
+          <th>Заголовок 2</th>
+          <th>Заголовок 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-toggle="collapse" data-target="#row1" class="accordion-toggle">
+          <td>Ячейка 1</td>
+          <td>Ячейка 2</td>
+          <td>Ячейка 3</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="hiddenRow">
+            <div class="collapse" id="row1">
+              <div class="card-body">
+                <p>Скрытый блок для строки 1</p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#row2" class="accordion-toggle">
+          <td>Ячейка 4</td>
+          <td>Ячейка 5</td>
+          <td>Ячейка 6</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="hiddenRow">
+            <div class="collapse" id="row2">
+              <div class="card-body">
+                <p>Скрытый блок для строки 2</p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 

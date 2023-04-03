@@ -5,7 +5,7 @@ function check_connection()
     let login = document.getElementById("login");
     let password = document.getElementById("password");
     let password_hash = CryptoJS.SHA256(password.value).toString(); 
-    let password_hashed = [];
+    // let password_hashed = [];
 
     login_change();
     password_change();

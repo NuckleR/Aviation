@@ -25,6 +25,10 @@
             $query_2 = "SELECT DISTINCT r.name AS rank
                         FROM Employee e
                         LEFT JOIN Rank r ON e.rank_id=r.id";
+            $query_3 = "SELECT DISTINCT s.name, s.id
+                        FROM Fetch_Department_Speciality f
+                        LEFT JOIN Speciality s ON f.speciality_id=s.id
+                        LEFT JOIN Department d ON f.department_id=d.id";
         }
         else if($_AL == 1)
         {
@@ -35,10 +39,19 @@
                         FROM Department d
                         LEFT JOIN Location l ON d.location_id = l.id
                         WHERE d.id = $_D_ID)";
-            $query_2 = "SELECT DISTINCT r.name AS rank
+            $query_2 = "SELECT DISTINCT r.name AS name
                         FROM Employee e
                         LEFT JOIN Rank r ON e.rank_id=r.id
                         LEFT JOIN Department d ON e.department_id=d.id
+                        WHERE d.location_id =
+                        (SELECT l.id
+                        FROM Department d
+                        LEFT JOIN Location l ON d.location_id = l.id
+                        WHERE d.id = $_D_ID)";
+            $query_3 = "SELECT DISTINCT s.name AS name, s.id AS id
+                        FROM Fetch_Department_Speciality f
+                        LEFT JOIN Speciality s ON f.speciality_id=s.id
+                        LEFT JOIN Department d ON f.department_id=d.id
                         WHERE d.location_id =
                         (SELECT l.id
                         FROM Department d
@@ -55,12 +68,18 @@
                         LEFT JOIN Rank r ON e.rank_id=r.id
                         LEFT JOIN Department d ON e.department_id=d.id
                         WHERE d.id = $_D_ID";
+            $query_3 = "SELECT DISTINCT s.name, s.id
+                        FROM Fetch_Department_Speciality f
+                        LEFT JOIN Speciality s ON f.speciality_id=s.id
+                        LEFT JOIN Department d ON f.department_id=d.id
+                        WHERE d.id = $_D_ID";
         }
 
         $result_1 = mysqli_query($link, $query_1);
         $result_2 = mysqli_query($link, $query_2);
+        $result_3 = mysqli_query($link, $query_3);
 
-        $data_Row_res['departments']['ranks'];
+        $data_Row_res['departments']['ranks']['specialities'];
 
         if($result_1)
         {
@@ -79,6 +98,16 @@
             }
         }
         $data_Row_res['ranks'] = $dataRow_2;
+
+
+        if($result_3)
+        {
+            while($row_3 = mysqli_fetch_assoc($result_3))
+            {
+                $dataRow_3[] = $row_3;
+            }
+        }
+        $data_Row_res['specialities'] = $dataRow_3;
 
         echo json_encode($data_Row_res);
     }
