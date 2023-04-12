@@ -22,10 +22,13 @@
     }
     else
     {
-        $query_1 = "SELECT e.id AS id, e.department_id AS department_id,
+        $query_1 = "SELECT e.id AS id, 
+                            e.department_id AS department_id,
                             e.comment AS comment, 
                             e.name AS name, 
-                            r.name AS rank, s.name AS speciality,
+                            r.name AS rank,
+                            f.id AS speciality_id, 
+                            s.name AS speciality,
                             d.name AS department,
                             l.name AS location
                     FROM Employee e 
@@ -38,30 +41,42 @@
         
         if($_AL == 40404)
         {
-            $query_2 = "SELECT r.name AS name
+            $query_2 = "SELECT r.name AS name,
+                                r.id AS id
                         FROM Rank r";
         }
         else
         {
-            $query_2 = "SELECT r.name AS name
+            $query_2 = "SELECT r.name AS name,
+                                r.id AS id
                         FROM Rank r
                         WHERE r.id != 40404";
         }
         $query_3 = "SELECT d.name AS name,
-                        d.location_id AS location_id
+                        d.location_id AS location_id,
+                        d.id AS id
                     FROM Department d
                     WHERE d.location_id = 
                     (SELECT l.id
                     FROM Department d
                     LEFT JOIN Location l ON d.location_id = l.id
-                    WHERE d.id = $_D_ID)";
+                    WHERE d.id IN 
+                    (SELECT DISTINCT department_id
+                    FROM Employee
+                    WHERE id=$_employee_id))";
         $query_4 = "SELECT l.name AS name
                     FROM Location l";
-        $query_5 = "SELECT DISTINCT s.name AS name, 
-                        f.busy
+        $query_5 = "SELECT s.name AS name, 
+                    MAX(f.id) AS id,
+                    MIN(f.busy) AS busy
                     FROM Fetch_Department_Speciality f
                     LEFT JOIN Speciality s ON f.speciality_id=s.id
-                    WHERE f.department_id = $_D_ID";
+                    LEFT JOIN Department d ON f.department_id=d.id
+                    WHERE f.department_id IN 
+                    (SELECT DISTINCT department_id
+                    FROM Employee
+                    WHERE id=$_employee_id)
+                    GROUP BY s.name";
 
         $result_1 = mysqli_query($link, $query_1);
         $result_2 = mysqli_query($link, $query_2);

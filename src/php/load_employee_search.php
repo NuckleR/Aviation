@@ -22,7 +22,7 @@
         if($_AL == 40404)
         {
             $query_1 = "SELECT location_id, id, name FROM Department";
-            $query_2 = "SELECT DISTINCT r.name AS rank
+            $query_2 = "SELECT DISTINCT r.name AS name
                         FROM Employee e
                         LEFT JOIN Rank r ON e.rank_id=r.id";
             $query_3 = "SELECT DISTINCT s.name, s.id
@@ -63,7 +63,7 @@
             $query_1 = "SELECT location_id, id, name 
                         FROM Department d
                         WHERE d.id = $_D_ID";
-            $query_2 = "SELECT DISTINCT r.name AS rank
+            $query_2 = "SELECT DISTINCT r.name AS name
                         FROM Employee e
                         LEFT JOIN Rank r ON e.rank_id=r.id
                         LEFT JOIN Department d ON e.department_id=d.id

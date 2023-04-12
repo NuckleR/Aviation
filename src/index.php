@@ -7,9 +7,10 @@
     <!-- <link rel="stylesheet" href="css/autorization.css"> -->
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="addons/swup/swup.css">
     <title>Авторизация</title>
 </head>
-<body class="d-flex flex-column align-items-center justify-content-center">
+<body class="transition-fade d-flex flex-column align-items-center justify-content-center">
     <div class="d-flex flex-column align-items-center justify-content-center position-absolute top-50 start-50 translate-middle">
     <p class="display-3">ГААСУ "Авиация"</p>
         <form class="col-md-10" novalidate>
@@ -34,6 +35,10 @@
     <script type="text/javascript" src="js/jQuery/jQuery.js"></script>
     <script type="text/javascript" src="js/CryptoJS/crypto-js.min.js"></script>
     <script type="text/javascript" src="bootstrap/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/autorization.js"></script>
+    <script type="text/javascript" src="js/Autorization/autorization.js"></script>
+    <script type="text/javascript" src="addons/swup/swup.min.js"></script>
+    <script>
+        const swup = new Swup();
+    </script>
 </body>
 </html>

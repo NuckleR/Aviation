@@ -5,6 +5,8 @@
     
     $_AL = $data->{'AL'};
     $_D_ID = $data->{'DID'};
+    $datetime = date('Y-m-d H:i:s');
+    $datetime_send = date('Y-m-d');
 
     $hostname = "localhost";
     $username = "root";
@@ -24,14 +26,20 @@
         {
             $query_1 = "SELECT id, name, deleted FROM Location";
             $query_2 = "SELECT location_id, id, name, deleted FROM Department";
-            $query_3 = 'SELECT e.id, e.department_id, e.name, 
+            $query_3 = "SELECT e.id, e.department_id, e.name, 
                                 r.name AS rank,
                                 s.name AS speciality,
-                                e.deleted AS deleted
+                                e.deleted AS deleted,
+                                (SELECT st.name FROM Employee_Status es
+                                LEFT JOIN  Statuses st ON es.status_id = st.id
+                                    WHERE es.employee_id = e.id 
+                                    AND date_start < '$datetime' 
+                                    AND date_finish > '$datetime') AS status_name
                         FROM Employee e 
                         LEFT JOIN Rank r ON e.rank_id=r.id
                         LEFT JOIN Fetch_Department_Speciality f ON e.speciality_id=f.id
-                        LEFT JOIN Speciality s ON f.speciality_id=s.id';
+                        LEFT JOIN Speciality s ON f.speciality_id=s.id";
+            $query_4 = "SELECT id, name FROM Statuses";
         }
         else if($_AL == 1)
         {
@@ -49,7 +57,12 @@
             $query_3 = "SELECT e.id, e.department_id, e.name, 
                                 r.name AS rank,
                                 s.name AS speciality,
-                                e.deleted AS deleted
+                                e.deleted AS deleted,
+                                (SELECT st.name FROM Employee_Status es
+                                LEFT JOIN  Statuses st ON es.status_id = st.id
+                                    WHERE es.employee_id = e.id 
+                                    AND date_start < '$datetime' 
+                                    AND date_finish > '$datetime') AS status_name
                         FROM Employee e 
                         LEFT JOIN Rank r ON e.rank_id=r.id
                         LEFT JOIN Speciality s ON e.speciality_id=s.id
@@ -59,6 +72,7 @@
                         FROM Department d
                         LEFT JOIN Location l ON d.location_id = l.id
                         WHERE d.id = $_D_ID)";
+            $query_4 = "SELECT id, name FROM Statuses";
         }
         else if($_AL == 2)
         {
@@ -72,20 +86,27 @@
             $query_3 = "SELECT e.id, e.department_id, e.name, 
                                 r.name AS rank,
                                 s.name AS speciality,
-                                e.deleted AS deleted
+                                e.deleted AS deleted,
+                                (SELECT st.name FROM Employee_Status es
+                                LEFT JOIN  Statuses st ON es.status_id = st.id
+                                    WHERE es.employee_id = e.id 
+                                    AND date_start < '$datetime' 
+                                    AND date_finish > '$datetime') AS status_name
                         FROM Employee e 
                         LEFT JOIN Rank r ON e.rank_id=r.id
                         LEFT JOIN Speciality s ON e.speciality_id=s.id
                         LEFT JOIN Department d ON e.department_id=d.id
                         WHERE d.id = $_D_ID";
+            $query_4 = "SELECT id, name FROM Statuses";
         }
 
         $result_1 = mysqli_query($link, $query_1);
         $result_2 = mysqli_query($link, $query_2);
         $result_3 = mysqli_query($link, $query_3);
+        $result_4 = mysqli_query($link, $query_4);
     
         // $data_Row_1 = array();
-        $data_Row_res['locations']['departments']['employess'];
+        $data_Row_res['locations']['departments']['employess']['statuses']['datetime'];
 
         if($result_1)
         {
@@ -113,6 +134,16 @@
             }
         }
         $data_Row_res['employees'] = $dataRow_3;
+
+        if($result_4)
+        {
+            while($row_4 = mysqli_fetch_assoc($result_4))
+            {
+                $dataRow_4[] = $row_4;
+            }
+        }
+        $data_Row_res['statuses'] = $dataRow_4;
+        $data_Row_res['datetime'] = $datetime_send;
 
         // echo json_encode($dataRow_1);
         // echo json_encode([$dataRow_1, $dataRow_2, $dataRow_3]);

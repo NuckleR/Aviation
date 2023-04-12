@@ -145,6 +145,7 @@ function check_connection()
             {
                 localStorage.setItem('AccessLevel', obj[0]['users_group_id']);
                 localStorage.setItem('DepartmentID', obj[0]['department_id']);
+                localStorage.setItem('UserID', obj[0]['id']);
                 
                 // console.log(obj[0]['department_id']);
 

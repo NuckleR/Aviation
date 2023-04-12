@@ -1,3 +1,12 @@
+// var table = document.getElementById('table_body_id');
+
+// Сохраняем значение скролла в Local Storage при прокрутке
+document.getElementById('table_body_id').addEventListener('scroll', function() {
+  localStorage.setItem('tableEmpScrollPosition', document.getElementById('table_body_id'));
+//   console.log("Вниз");
+});
+
+
 function getStringBeforeSpace(str) 
 {
     const spaceIndex = str.indexOf(' ');
