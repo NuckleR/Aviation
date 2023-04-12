@@ -238,8 +238,8 @@
             </thead>
         </table>
     </div>
-    <div id="table_body_id" class="text-center   col-10 mx-auto overflow-y-auto mt-0 mb-0" style="max-height: 480px">
-        <table  class="table justify-content-center table-sm table-bordered mb-0">
+    <div id="table_body_id" class="text-center col-10 mx-auto overflow-y-auto mt-0 mb-0" style="max-height: 480px">
+        <table  class="table justify-content-center table-sm table-bordered mb-0 ">
             <tbody id="table_body">
             <!-- <tr>
                 <th colspan="4" style="background: #F37777; border: 1px solid #EC2D2D; color: #EBEBEB;">

@@ -97,9 +97,9 @@
                     <tr>
                         <th scope="col" class="col-md-3" style="border: 1px solid #0a53be;">ФИО</th>
                         <th scope="col" class="col-md-2" style="border: 1px solid #0a53be;">Звание</th>
-                        <th scope="col" class="col-md-2" style="border: 1px solid #0a53be;">Должность</th>
+                        <th scope="col" class="col-md-3" style="border: 1px solid #0a53be;">Должность</th>
                         <th id="table_date" scope="col" class="col-md-2" style="border: 1px solid #0a53be;">[дата dd.mm.yy]</th>
-                        <th scope="col" class="col-md-3 text-break" style="border: 1px solid #0a53be;">Инструменты</th>
+                        <th scope="col" class="col-md-2 text-break" style="border: 1px solid #0a53be;">Инструменты</th>
                     </tr>
                 </thead>
             </table>
